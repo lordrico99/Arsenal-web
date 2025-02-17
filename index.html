@@ -1,21 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arsenal Players</title>
-</html>
-    <body>
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
+            text-align: center;
         }
 
+        /* Header */
         .header {
             display: flex;
             align-items: center;
@@ -23,75 +23,128 @@
             gap: 10px;
             background-color: #E30713;
             color: #fff;
-            padding: 5px;
+            padding: 15px;
+            width: 100%;
+            box-sizing: border-box;
+            flex-wrap: wrap;
         }
 
         .header img {
-            width: 200px; /* Adjust size of logo */
-            height: 150px;
-            /*border-radius: 50%; /* Make it circular if needed */
+            width: 150px;
+            height: 100px;
         }
 
         h1 {
             font-family: 'Algerian', monospace;
             margin: 0;
             font-size: 2rem;
-        }4
+        }
 
+        /* Players List */
         #players-list {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .player-name {
-            font-size: 30px;
-            font-weight: bold;
-            color: #e01e37;
-            cursor: pointer;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .player-name:hover {
-            color: #ff4d67;
-            transform: scale(1.1); /* Slightly enlarge on hover */
-        }
-
-        .player-details {
-            margin: 10px auto;
-            padding: 50px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
             display: flex;
-            align-items: center;
-            gap: 10px;
-            max-width: 500px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 20px;
+            justify-content: center;
+            margin-top: 30px;
         }
 
-        .player-details img {
+        /* Player Card */
+        .player-card {
+            position: relative;
             width: 300px;
             height: 200px;
+            overflow: hidden;
+            cursor: pointer;
             border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
         }
 
-        .player-details ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .player-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Player Image */
+        .player-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        /* Player Details (Hidden Initially) */
+        .player-details {
+            position: absolute;
+            top:50%;
+            left: 0%;
+            width: 200px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(-50%);
+            transition: opacity 0.3s ease-in-out, left 0.3s ease-in-out;
             text-align: left;
+            pointer-events: none; /* Prevents accidental hover issues */
+        }
+
+        /* Show details when hovering */
+        .player-card:hover .player-details {
+            opacity: 1;
+            left: 40%;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header img {
+                width: 120px;
+                height: 80px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            #players-list {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            /* Move details below the image for smaller screens */
+            .player-details {
+                left: 0;
+                top: 100%;
+                width: 60%;
+                text-align: center;
+            }
+
+            .player-card:hover .player-details {
+                opacity: 1;
+                top: 50%;
+            }
         }
     </style>
-</body>
+</head>
 <body>
+
     <!-- Header Section -->
     <div class="header">
-        <img src="player images\arsenal logo.jpg" alt="Arsenal Logo">
+        <img src="player images/arsenal logo.jpg" alt="Arsenal Logo">
         <h1>ARSENAL PLAYERS</h1>
     </div>
 
     <!-- Players List -->
     <div id="players-list"></div>
+
     <script src="index.js"></script> <!-- Link to your JavaScript file -->
+
 </body>
-</html> 
+</html>
